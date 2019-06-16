@@ -39,10 +39,10 @@ namespace AppServices.Services
             return studentDto;
         }
 
-        public IQueryable<StudentDto> GetAll()
+        public IList<StudentDto> GetAll()
         {
-            IQueryable<Student> students = _studentRepository.GetAll();
-            IQueryable<StudentDto> studentsDto = _mapper.Map<IQueryable<StudentDto>>(students);
+            IList<Student> students = _studentRepository.GetAll().ToList();
+            IList<StudentDto> studentsDto = _mapper.Map<IList<StudentDto>>(students);
             return studentsDto;
         }
 

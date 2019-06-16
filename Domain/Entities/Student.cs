@@ -21,7 +21,7 @@ namespace Domain.Entities
         public string MedPolis { get; set; }
         public LocalCity LocalCity { get; set; }
         public string Address { get; set; }
-        public uint ApartmentNumber { get; set; }
+        public ushort ApartmentNumber { get; set; }
         /// <summary>
         /// ФИО родителя1 
         /// </summary>

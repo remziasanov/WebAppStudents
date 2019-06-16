@@ -25,7 +25,7 @@ namespace AppServices.Services
             throw new NotImplementedException();
         }
 
-        public IQueryable<SchoolDto> GetAll()
+        public IList<SchoolDto> GetAll()
         {
             throw new NotImplementedException();
         }

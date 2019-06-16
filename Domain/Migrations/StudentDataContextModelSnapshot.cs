@@ -29,7 +29,7 @@ namespace Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Department");
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("Domain.Entities.Document", b =>
@@ -50,7 +50,7 @@ namespace Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Document");
+                    b.ToTable("Documents");
                 });
 
             modelBuilder.Entity("Domain.Entities.Group", b =>
@@ -69,7 +69,7 @@ namespace Domain.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Group");
+                    b.ToTable("Groups");
                 });
 
             modelBuilder.Entity("Domain.Entities.LocalCity", b =>
@@ -86,7 +86,7 @@ namespace Domain.Migrations
 
                     b.HasIndex("RegionId");
 
-                    b.ToTable("LocalCity");
+                    b.ToTable("Cities");
                 });
 
             modelBuilder.Entity("Domain.Entities.Region", b =>
@@ -99,7 +99,24 @@ namespace Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Region");
+                    b.ToTable("Regions");
+                });
+
+            modelBuilder.Entity("Domain.Entities.School", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CityId");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.ToTable("Schools");
                 });
 
             modelBuilder.Entity("Domain.Entities.Student", b =>
@@ -110,7 +127,7 @@ namespace Domain.Migrations
 
                     b.Property<string>("Address");
 
-                    b.Property<long>("ApartmentNumber");
+                    b.Property<int>("ApartmentNumber");
 
                     b.Property<string>("Email");
 
@@ -175,6 +192,13 @@ namespace Domain.Migrations
                         .WithMany("Cities")
                         .HasForeignKey("RegionId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Domain.Entities.School", b =>
+                {
+                    b.HasOne("Domain.Entities.LocalCity", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId");
                 });
 
             modelBuilder.Entity("Domain.Entities.Student", b =>

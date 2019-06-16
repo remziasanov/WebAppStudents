@@ -9,7 +9,7 @@ namespace Domain.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Department",
+                name: "Departments",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -18,11 +18,11 @@ namespace Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Department", x => x.Id);
+                    table.PrimaryKey("PK_Departments", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Document",
+                name: "Documents",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -35,11 +35,11 @@ namespace Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Document", x => x.Id);
+                    table.PrimaryKey("PK_Documents", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Region",
+                name: "Regions",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -48,11 +48,11 @@ namespace Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Region", x => x.Id);
+                    table.PrimaryKey("PK_Regions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Group",
+                name: "Groups",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -63,17 +63,17 @@ namespace Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Group", x => x.Id);
+                    table.PrimaryKey("PK_Groups", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Group_Department_DepartmentId",
+                        name: "FK_Groups_Departments_DepartmentId",
                         column: x => x.DepartmentId,
-                        principalTable: "Department",
+                        principalTable: "Departments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "LocalCity",
+                name: "Cities",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -83,13 +83,33 @@ namespace Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LocalCity", x => x.Id);
+                    table.PrimaryKey("PK_Cities", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_LocalCity_Region_RegionId",
+                        name: "FK_Cities_Regions_RegionId",
                         column: x => x.RegionId,
-                        principalTable: "Region",
+                        principalTable: "Regions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Schools",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Title = table.Column<string>(nullable: true),
+                    CityId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Schools", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Schools_Cities_CityId",
+                        column: x => x.CityId,
+                        principalTable: "Cities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -109,7 +129,7 @@ namespace Domain.Migrations
                     MedPolis = table.Column<string>(nullable: true),
                     LocalCityId = table.Column<int>(nullable: true),
                     Address = table.Column<string>(nullable: true),
-                    ApartmentNumber = table.Column<long>(nullable: false),
+                    ApartmentNumber = table.Column<int>(nullable: false),
                     Parent1 = table.Column<string>(nullable: true),
                     Parent1Phone = table.Column<string>(nullable: true),
                     Parent2 = table.Column<string>(nullable: true),
@@ -122,46 +142,51 @@ namespace Domain.Migrations
                 {
                     table.PrimaryKey("PK_Students", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Students_Group_Group1Id",
+                        name: "FK_Students_Groups_Group1Id",
                         column: x => x.Group1Id,
-                        principalTable: "Group",
+                        principalTable: "Groups",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Students_Group_Group2Id",
+                        name: "FK_Students_Groups_Group2Id",
                         column: x => x.Group2Id,
-                        principalTable: "Group",
+                        principalTable: "Groups",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Students_Group_Group3Id",
+                        name: "FK_Students_Groups_Group3Id",
                         column: x => x.Group3Id,
-                        principalTable: "Group",
+                        principalTable: "Groups",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Students_LocalCity_LocalCityId",
+                        name: "FK_Students_Cities_LocalCityId",
                         column: x => x.LocalCityId,
-                        principalTable: "LocalCity",
+                        principalTable: "Cities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Students_Document_MainDocumentId",
+                        name: "FK_Students_Documents_MainDocumentId",
                         column: x => x.MainDocumentId,
-                        principalTable: "Document",
+                        principalTable: "Documents",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Group_DepartmentId",
-                table: "Group",
+                name: "IX_Cities_RegionId",
+                table: "Cities",
+                column: "RegionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Groups_DepartmentId",
+                table: "Groups",
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LocalCity_RegionId",
-                table: "LocalCity",
-                column: "RegionId");
+                name: "IX_Schools_CityId",
+                table: "Schools",
+                column: "CityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Students_Group1Id",
@@ -192,22 +217,25 @@ namespace Domain.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Schools");
+
+            migrationBuilder.DropTable(
                 name: "Students");
 
             migrationBuilder.DropTable(
-                name: "Group");
+                name: "Groups");
 
             migrationBuilder.DropTable(
-                name: "LocalCity");
+                name: "Cities");
 
             migrationBuilder.DropTable(
-                name: "Document");
+                name: "Documents");
 
             migrationBuilder.DropTable(
-                name: "Department");
+                name: "Departments");
 
             migrationBuilder.DropTable(
-                name: "Region");
+                name: "Regions");
         }
     }
 }

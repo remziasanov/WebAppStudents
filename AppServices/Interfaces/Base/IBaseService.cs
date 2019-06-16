@@ -9,7 +9,7 @@ namespace AppServices.Interfaces.Base
 {
     public interface IBaseService<TEntity, TId> where TEntity : EntityWithTypedIdBaseDto<TId>
     {
-        IQueryable<TEntity> GetAll();
+        IList<TEntity> GetAll();
         Task<TEntity> Create(TEntity entity);
         Task<TEntity> Update(TEntity entity);
         Task<TEntity> Get(TId id);

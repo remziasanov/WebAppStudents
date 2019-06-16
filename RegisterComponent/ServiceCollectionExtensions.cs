@@ -1,4 +1,6 @@
-﻿using Domain.Data.Repositories;
+﻿using AppServices.Interfaces;
+using AppServices.Services;
+using Domain.Data.Repositories;
 using Domain.DataContext;
 using Domain.RepositoryInterfaces;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +19,7 @@ namespace RegisterComponent
             services.AddTransient<ICityLocalRepository, CityLocalRepository>();
             services.AddTransient<ISchoolRepository, SchoolRepository>();
             services.AddTransient<IDocumentRepository, DocumentRepository>();
-            //services.AddTransient<IStudentService, StudentService>();
+            services.AddTransient<IStudentService, StudentService>();
             return services;
         }
     }
