@@ -6,7 +6,7 @@ using WebApiContracts.DTO;
 
 namespace AppServices.Interfaces
 {
-    interface IDepartmentService : IBaseService<DepartmentDto, int>
+    public interface IDepartmentService : IBaseService<DepartmentDto, int>
     {
 
     }

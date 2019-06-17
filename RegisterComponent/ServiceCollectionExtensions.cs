@@ -20,6 +20,7 @@ namespace RegisterComponent
             services.AddTransient<ISchoolRepository, SchoolRepository>();
             services.AddTransient<IDocumentRepository, DocumentRepository>();
             services.AddTransient<IStudentService, StudentService>();
+            services.AddTransient<IDepartmentService, DepartmentService>();
             return services;
         }
     }
