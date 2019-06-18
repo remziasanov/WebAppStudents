@@ -42,11 +42,51 @@ namespace Client
 
                 }
             }
-            if(students!=null)
-            Parent1.Text = students.First().Id.ToString();
+            //if(students!=null)
+            //Parent1.Text = students.First().Id.ToString();
 
 
         }
 
+        private void Form_DropDownOpened(object sender, EventArgs e)
+        {
+            for (int i = 1; i <= 11; i++)
+            {
+                form.Items.Add(i.ToString());
+                this.form.DropDownOpened -= this.Form_DropDownOpened;
+            }
+        }
+        private void Letter_DropDownOpened(object sender, EventArgs e)
+        {
+            for (int i = 'А'; i <= 'Я'; i++)
+            {
+                letter.Items.Add(Convert.ToChar(i));
+            }
+            this.letter.DropDownOpened -= this.Letter_DropDownOpened;
+        }
+
+        private async void DepartmentName1_DropDownOpened(object sender, EventArgs e)
+        {
+            List<DepartmentUI> departments = null;
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response = await client.GetAsync("https://localhost:44357/api/department");
+                if (response.IsSuccessStatusCode)
+                {
+                    string data = await response.Content.ReadAsStringAsync();
+                    departments = JsonConvert.DeserializeObject<List<DepartmentUI>>(data);
+
+                }
+            }
+            if(departments!=null)
+            {
+                foreach (var item in departments)
+                {
+                    departmentName1.Items.Add(item.Title);
+
+                }
+            }
+            departmentName1.DropDownOpened -= this.DepartmentName1_DropDownOpened;
+        }
     }
 }
