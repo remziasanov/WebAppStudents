@@ -88,5 +88,23 @@ namespace Client
             }
             departmentName1.DropDownOpened -= this.DepartmentName1_DropDownOpened;
         }
+
+        private async void Cities_DropDownOpened(object sender, EventArgs e)
+        {
+            
+        }
+        private async void Regions_DropDownOpened(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void DepartmentName2_DropDownOpened(object sender, EventArgs e)
+        {
+            
+        }
+        private async void DepartmentName3_DropDownOpened(object sender, EventArgs e)
+        {
+         
+        }
     }
 }
