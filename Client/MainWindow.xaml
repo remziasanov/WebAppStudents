@@ -52,13 +52,13 @@
         <Label Content="Дата рождения" HorizontalAlignment="Left" Margin="10,315,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Button Content="Добавить" HorizontalAlignment="Left" Margin="141,476,0,0" VerticalAlignment="Top" Width="132" FontFamily="Playbill" FontSize="20" Height="32"  Grid.Column="2"/>
         <ComboBox Name="form" HorizontalAlignment="Left" Margin="124,141,0,0" VerticalAlignment="Top" Width="60" DropDownOpened="Form_DropDownOpened"/>
-        <ComboBox Name="regions" HorizontalAlignment="Left" Margin="124,217,0,0" VerticalAlignment="Top" Width="120" DropDownOpened="Regions_DropDownOpened" />
+        <ComboBox Name="regions" HorizontalAlignment="Left" Margin="124,217,0,0" VerticalAlignment="Top" Width="120" DropDownOpened="Regions_DropDownOpened" IsEditable="True"/>
         <ComboBox Name="letter"  HorizontalAlignment="Left" Margin="184,141,0,0" VerticalAlignment="Top" Width="60" DropDownOpened="Letter_DropDownOpened"/>
         <ComboBox Name="groupName1" HorizontalAlignment="Left" Margin="54,36,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.Column="2"/>
         <ComboBox Name="groupName2" HorizontalAlignment="Left" Margin="54,64,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.Column="2"/>
-        <ComboBox x:Name="departmentName2" HorizontalAlignment="Left" Margin="24,64,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.ColumnSpan="2" Grid.Column="1" DropDownOpened="DepartmentName2_DropDownOpened"/>
+        <ComboBox x:Name="departmentName2" HorizontalAlignment="Left" Margin="24,64,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.ColumnSpan="2" Grid.Column="1" DropDownOpened="DepartmentName2_DropDownOpened" IsEditable="False" IsHitTestVisible="False" Focusable="False"/>
         <ComboBox Name="groupName3" HorizontalAlignment="Left" Margin="54,91,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.Column="2"/>
-        <ComboBox x:Name="departmentName3" HorizontalAlignment="Left" Margin="24,91,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.ColumnSpan="2" Grid.Column="1" DropDownOpened="DepartmentName3_DropDownOpened"/>
+        <ComboBox x:Name="departmentName3" HorizontalAlignment="Left" Margin="24,91,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.ColumnSpan="2" Grid.Column="1" DropDownOpened="DepartmentName3_DropDownOpened" IsEditable="False" IsHitTestVisible="False" Focusable="False"/>
         <Label Content="Родитель 1" HorizontalAlignment="Left" Margin="266,164,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Родитель 2" HorizontalAlignment="Left" Margin="266,193,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox Name="parent1Name" HorizontalAlignment="Left" Height="23" Margin="25,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" Grid.ColumnSpan="2" Cursor="None" IsUndoEnabled="True" Grid.Column="1"/>
@@ -71,7 +71,7 @@
         <Label Content="Телефон" HorizontalAlignment="Left" Margin="54,141,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.855,0.231" Width="169" Grid.Column="2"/>
         <Label Content="Отдел" HorizontalAlignment="Left" Margin="24,10,0,0" VerticalAlignment="Top" Width="169" Grid.ColumnSpan="2" Grid.Column="1"/>
         <Label Content="Название" HorizontalAlignment="Left" Margin="54,10,0,0" VerticalAlignment="Top" Width="169" Grid.Column="2"/>
-        <ComboBox x:Name="departmentName1" HorizontalAlignment="Left" Margin="24,36,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.ColumnSpan="2" Grid.Column="1" DropDownOpened="DepartmentName1_DropDownOpened"/>
+        <ComboBox x:Name="departmentName1" HorizontalAlignment="Left" Margin="24,36,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.ColumnSpan="2" Grid.Column="1" DropDownOpened="DepartmentName1_DropDownOpened" IsEditable="True" />
         <Label Content="Город" HorizontalAlignment="Left" Margin="10,237,0,0" VerticalAlignment="Top" FontSize="14"/>
         <ComboBox x:Name="cities" HorizontalAlignment="Left" Margin="124,241,0,0" VerticalAlignment="Top" Width="120" DropDownOpened="Cities_DropDownOpened" />
 

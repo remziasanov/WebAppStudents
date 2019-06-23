@@ -1,4 +1,6 @@
-﻿using Client.ModelsUI;
+﻿using Client.LoadData;
+using Client.ModelsUI;
+using Client.ModelsUI.Base;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -65,46 +67,65 @@ namespace Client
             this.letter.DropDownOpened -= this.Letter_DropDownOpened;
         }
 
-        private async void DepartmentName1_DropDownOpened(object sender, EventArgs e)
-        {
-            List<DepartmentUI> departments = null;
-            using (HttpClient client = new HttpClient())
-            {
-                HttpResponseMessage response = await client.GetAsync("https://localhost:44357/api/department");
-                if (response.IsSuccessStatusCode)
-                {
-                    string data = await response.Content.ReadAsStringAsync();
-                    departments = JsonConvert.DeserializeObject<List<DepartmentUI>>(data);
-
-                }
-            }
-            if(departments!=null)
-            {
-                foreach (var item in departments)
-                {
-                    departmentName1.Items.Add(item.Title);
-
-                }
-            }
-            departmentName1.DropDownOpened -= this.DepartmentName1_DropDownOpened;
-        }
-
         private async void Cities_DropDownOpened(object sender, EventArgs e)
         {
-            
+            List<LocalCityUI> localcities = await LoadDataFromJson<LocalCityUI>.LoadList("https://localhost:44357/api/citylocal");
+            if (localcities != null)
+            {
+                foreach (var item in localcities)
+                {
+                    cities.Items.Add(item.CityName);
+                }
+            }
+            cities.DropDownOpened -= this.Cities_DropDownOpened;
         }
         private async void Regions_DropDownOpened(object sender, EventArgs e)
         {
-
+            List<RegionUI> _regions = await LoadDataFromJson<RegionUI>.LoadList("https://localhost:44357/api/region");
+            if (_regions != null)
+            {
+                foreach (var item in _regions)
+                {
+                    regions.Items.Add(item.NameRegion);
+                }
+            }
+            regions.DropDownOpened -= this.Regions_DropDownOpened;
         }
 
+        private async Task LoadDepartments(ComboBox comboBox)
+        {
+            List<DepartmentUI> departments = await LoadDataFromJson<DepartmentUI>.LoadList("https://localhost:44357/api/department");
+            if (departments != null)
+            {
+                foreach (var item in departments)
+                {
+                    comboBox.Items.Add(item.Title);
+                }
+            }
+        }
+
+        private async void DepartmentName1_DropDownOpened(object sender, EventArgs e)
+        {
+            await LoadDepartments(departmentName1);
+            
+            departmentName2.IsEditable = true;
+            departmentName2.Focusable = true;
+            departmentName2.IsHitTestVisible = true;
+            departmentName1.DropDownOpened -= this.DepartmentName1_DropDownOpened;
+        }
         private async void DepartmentName2_DropDownOpened(object sender, EventArgs e)
         {
-            
+            await LoadDepartments(departmentName2);
+            departmentName3.IsEditable = true;
+            departmentName3.Focusable = true;
+            departmentName3.IsHitTestVisible = true;
+            departmentName2.DropDownOpened -= this.DepartmentName1_DropDownOpened;
         }
         private async void DepartmentName3_DropDownOpened(object sender, EventArgs e)
         {
-         
+            await LoadDepartments(departmentName3);
+            departmentName3.DropDownOpened -= this.DepartmentName3_DropDownOpened;
         }
+
     }
 }

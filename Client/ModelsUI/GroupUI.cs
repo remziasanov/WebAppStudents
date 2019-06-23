@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client.ModelsUI.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Client.ModelsUI
 {
-    public class GroupUI
+    public class GroupUI : EntityBaseUI<int>
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public string Teacher { get; set; }
         /// <summary>

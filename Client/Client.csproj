@@ -66,12 +66,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="LoadData\LoadDataFromJson.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModelsUI\Base\EntityBaseUI.cs" />
+    <Compile Include="ModelsUI\Base\EntityWithTypedIdBaseUI.cs" />
     <Compile Include="ModelsUI\DepartmentUI.cs" />
     <Compile Include="ModelsUI\DocumentUI.cs" />
     <Compile Include="ModelsUI\GroupUI.cs" />

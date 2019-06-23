@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client.ModelsUI.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,8 @@ namespace Client.ModelsUI
     /// <summary>
     /// Документ студента
     /// </summary>
-    public class DocumentUI 
+    public class DocumentUI : EntityBaseUI<int>
     {
-        public int Id { get; set; }
         public DocumentType DocumentType { get; set; }
         public string Number { get; set; }
         public string Seria { get; set; }

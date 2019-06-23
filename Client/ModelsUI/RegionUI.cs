@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client.ModelsUI.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,8 @@ namespace Client.ModelsUI
     /// <summary>
     /// Регион или район Крыма
     /// </summary>
-    public class RegionUI 
+    public class RegionUI : EntityBaseUI<int>
     {
-        public int Id { get; set; }
         public string NameRegion { get; set; }
         public List<LocalCityUI> Cities { get; set; }
     }
