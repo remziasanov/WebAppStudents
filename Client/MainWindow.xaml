@@ -52,7 +52,7 @@
         <Label Content="Дата рождения" HorizontalAlignment="Left" Margin="10,315,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Button Content="Добавить" HorizontalAlignment="Left" Margin="141,476,0,0" VerticalAlignment="Top" Width="132" FontFamily="Playbill" FontSize="20" Height="32"  Grid.Column="2"/>
         <ComboBox Name="form" HorizontalAlignment="Left" Margin="124,141,0,0" VerticalAlignment="Top" Width="60" DropDownOpened="Form_DropDownOpened"/>
-        <ComboBox Name="regions" HorizontalAlignment="Left" Margin="124,217,0,0" VerticalAlignment="Top" Width="120" DropDownOpened="Regions_DropDownOpened" IsEditable="True"/>
+        <ComboBox Name="regions" HorizontalAlignment="Left" Margin="124,217,0,0" VerticalAlignment="Top" Width="120" DropDownOpened="Regions_DropDownOpened" IsEditable="True" SelectionChanged="Regions_SelectionChanged"/>
         <ComboBox Name="letter"  HorizontalAlignment="Left" Margin="184,141,0,0" VerticalAlignment="Top" Width="60" DropDownOpened="Letter_DropDownOpened"/>
         <ComboBox Name="groupName1" HorizontalAlignment="Left" Margin="54,36,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.Column="2"/>
         <ComboBox Name="groupName2" HorizontalAlignment="Left" Margin="54,64,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.Column="2"/>

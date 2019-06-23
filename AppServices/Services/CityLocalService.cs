@@ -11,7 +11,7 @@ using WebApiContracts.DTO;
 
 namespace AppServices.Services
 {
-    class CityLocalService : ICityLocalService
+    public class CityLocalService : ICityLocalService
     {
         protected readonly ICityLocalRepository _cityLocalRepository;
         protected readonly IMapper _mapper;
@@ -39,6 +39,20 @@ namespace AppServices.Services
         public IList<LocalCityDto> GetAll()
         {
             IList<LocalCity> LocalCities = _cityLocalRepository.GetAll().ToList();
+            IList<LocalCityDto> LocalCitiesDto = _mapper.Map<IList<LocalCityDto>>(LocalCities);
+            return LocalCitiesDto;
+        }
+
+        public IList<LocalCityDto> GetAll(int RegionId)
+        {
+            IList<LocalCity> LocalCities = _cityLocalRepository.GetAll(RegionId).ToList();
+            IList<LocalCityDto> LocalCitiesDto = _mapper.Map<IList<LocalCityDto>>(LocalCities);
+            return LocalCitiesDto;
+        }
+
+        public IList<LocalCityDto> GetAll(string regionname)
+        {
+            IList<LocalCity> LocalCities = _cityLocalRepository.GetAll(regionname).ToList();
             IList<LocalCityDto> LocalCitiesDto = _mapper.Map<IList<LocalCityDto>>(LocalCities);
             return LocalCitiesDto;
         }

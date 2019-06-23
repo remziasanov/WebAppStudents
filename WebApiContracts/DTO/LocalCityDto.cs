@@ -9,6 +9,5 @@ namespace WebApiContracts.DTO
     {
         public string CityName { get; set; }
         public int RegionId { get; set; }
-        public RegionDto Region { get; set; }
     }
 }

@@ -13,7 +13,5 @@ namespace Domain.Entities
     {
         public string CityName { get; set; }
         public int RegionId { get; set; }
-        [ForeignKey("RegionId")]
-        public Region Region { get; set; }
     }
 }

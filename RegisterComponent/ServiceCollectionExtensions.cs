@@ -23,6 +23,7 @@ namespace RegisterComponent
             services.AddTransient<IDepartmentService, DepartmentService>();
             services.AddTransient<IRegionService, RegionService>();
             services.AddTransient<IRegionRepository, RegionRepository>();
+            services.AddTransient<ICityLocalService, CityLocalService>();
             return services;
         }
     }

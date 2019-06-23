@@ -28,26 +28,6 @@ namespace Client
         public MainWindow()
         {
             InitializeComponent();
-            GetALLTEst();
-        }
-        private readonly HttpClient _client;
-        public async Task GetALLTEst()
-        {
-            List<StudentUI> students=null;
-            using (HttpClient client = new HttpClient())
-            {
-                HttpResponseMessage response = await client.GetAsync("https://localhost:44357/api/values");
-                if (response.IsSuccessStatusCode)
-                {
-                    string data = await response.Content.ReadAsStringAsync();
-                    students = JsonConvert.DeserializeObject<List<StudentUI>>(data);
-
-                }
-            }
-            //if(students!=null)
-            //Parent1.Text = students.First().Id.ToString();
-
-
         }
 
         private void Form_DropDownOpened(object sender, EventArgs e)
@@ -69,14 +49,7 @@ namespace Client
 
         private async void Cities_DropDownOpened(object sender, EventArgs e)
         {
-            List<LocalCityUI> localcities = await LoadDataFromJson<LocalCityUI>.LoadList("https://localhost:44357/api/citylocal");
-            if (localcities != null)
-            {
-                foreach (var item in localcities)
-                {
-                    cities.Items.Add(item.CityName);
-                }
-            }
+            
             cities.DropDownOpened -= this.Cities_DropDownOpened;
         }
         private async void Regions_DropDownOpened(object sender, EventArgs e)
@@ -127,5 +100,20 @@ namespace Client
             departmentName3.DropDownOpened -= this.DepartmentName3_DropDownOpened;
         }
 
+        private async void Regions_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cities.Items.Clear();
+            string Value = "";
+            if (regions.SelectedIndex >= 0)
+                Value = regions.SelectedItem.ToString();
+            List<LocalCityUI> localcities = await LoadDataFromJson<LocalCityUI>.LoadList("https://localhost:44357/api/citylocal/"+Value);
+            if (localcities != null)
+            {
+                foreach (var item in localcities)
+                {
+                    cities.Items.Add(item.CityName);
+                }
+            }
+        }
     }
 }

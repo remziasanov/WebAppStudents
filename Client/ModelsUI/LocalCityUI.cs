@@ -11,6 +11,5 @@ namespace Client.ModelsUI
     {
         public string CityName { get; set; }
         public int RegionId { get; set; }
-        public RegionUI Region { get; set; }
     }
 }
