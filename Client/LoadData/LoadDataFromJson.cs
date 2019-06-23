@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Client.LoadData
 {
@@ -28,12 +29,19 @@ namespace Client.LoadData
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new
                   MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = await client.GetAsync(url);
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string data = await response.Content.ReadAsStringAsync();
-                    results = JsonConvert.DeserializeObject<List<TypeModel>>(data);
+                    HttpResponseMessage response = await client.GetAsync(url);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string data = await response.Content.ReadAsStringAsync();
+                        results = JsonConvert.DeserializeObject<List<TypeModel>>(data);
 
+                    }
+                }
+                catch(System.Net.Http.HttpRequestException)
+                {
+                    return null;
                 }
             }
             return results;

@@ -54,6 +54,7 @@ namespace Client
         }
         private async void Regions_DropDownOpened(object sender, EventArgs e)
         {
+     
             List<RegionUI> _regions = await LoadDataFromJson<RegionUI>.LoadList("https://localhost:44357/api/region");
             if (_regions != null)
             {
@@ -61,6 +62,11 @@ namespace Client
                 {
                     regions.Items.Add(item.NameRegion);
                 }
+            }
+            else
+            {
+                ErrorLabel.Content = "Сервер не запущен или нет связи с БД";
+                ErrorLabel.Visibility = Visibility.Visible;
             }
             regions.DropDownOpened -= this.Regions_DropDownOpened;
         }

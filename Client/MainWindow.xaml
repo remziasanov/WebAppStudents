@@ -74,6 +74,7 @@
         <ComboBox x:Name="departmentName1" HorizontalAlignment="Left" Margin="24,36,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.ColumnSpan="2" Grid.Column="1" DropDownOpened="DepartmentName1_DropDownOpened" IsEditable="True" />
         <Label Content="Город" HorizontalAlignment="Left" Margin="10,237,0,0" VerticalAlignment="Top" FontSize="14"/>
         <ComboBox x:Name="cities" HorizontalAlignment="Left" Margin="124,241,0,0" VerticalAlignment="Top" Width="120" DropDownOpened="Cities_DropDownOpened" />
+        <Label Content="Ошибка" HorizontalAlignment="Left" Margin="54,517,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Name="ErrorLabel" Foreground="Red" Grid.ColumnSpan="3" Width="571" Visibility="Hidden" />
 
     </Grid>
 </Window>
