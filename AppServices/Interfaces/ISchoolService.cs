@@ -6,8 +6,9 @@ using WebApiContracts.DTO;
 
 namespace AppServices.Interfaces
 {
-    interface ISchoolService : IBaseService<SchoolDto, int>
+    public interface ISchoolService : IBaseService<SchoolDto, int>
     {
-
+        IList<SchoolDto> GetAll(int CityId);
+        IList<SchoolDto> GetAll(string RegionName);
     }
 }

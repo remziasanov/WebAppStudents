@@ -8,6 +8,6 @@ namespace WebApiContracts.DTO
     public class SchoolDto : EntityDto<int>
     {
         public string Title { get; set; }
-        public virtual LocalCityDto City { get; set; }
+        public int RegionId { get; set; }
     }
 }

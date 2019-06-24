@@ -8,6 +8,6 @@ namespace Domain.Entities
     public class School : EntityBase<int>
     {
         public string Title { get; set; }
-        public virtual LocalCity City { get; set; }
+        public int CityId { get; set; }
     }
 }
