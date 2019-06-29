@@ -8,7 +8,7 @@ namespace Domain.DataContext
     {
         public StudentDataContext CreateDbContext(string[] args)
         {
-            var conntectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\source\repos\StudentsMAN\Domain\DataContext\Database3.mdf;Integrated Security=True";
+            var conntectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\source\repos\StudentsMAN\Domain\DataContext\Database4.mdf;Integrated Security=True";
             var builder = new DbContextOptionsBuilder<StudentDataContext>().UseSqlServer(conntectionString);
             return new StudentDataContext(builder.Options);
         }

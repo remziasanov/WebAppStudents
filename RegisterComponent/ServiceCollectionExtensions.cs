@@ -24,6 +24,8 @@ namespace RegisterComponent
             services.AddTransient<IRegionService, RegionService>();
             services.AddTransient<IRegionRepository, RegionRepository>();
             services.AddTransient<ICityLocalService, CityLocalService>();
+            services.AddTransient<ISchoolService, SchoolService>();
+            services.AddTransient<IGroupService, GroupService>();
             return services;
         }
     }

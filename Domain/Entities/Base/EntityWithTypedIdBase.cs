@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Domain.Entities.Base
@@ -9,7 +10,7 @@ namespace Domain.Entities.Base
         /// <summary>
         /// Индетификатор
         /// </summary>
-        //[Key]
+        [Key]
         public virtual TId Id { get; protected set; }
     }
 }

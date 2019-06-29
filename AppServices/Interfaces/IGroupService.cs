@@ -6,8 +6,9 @@ using WebApiContracts.DTO;
 
 namespace AppServices.Interfaces
 {
-    interface IGroupService : IBaseService<GroupDto, int>
+    public interface IGroupService : IBaseService<GroupDto, int>
     {
-
+        IList<GroupDto> GetAll(int departmentId);
+        IList<GroupDto> GetAll(string departmentName);
     }
 }

@@ -13,6 +13,5 @@ namespace WebApiContracts.DTO
         /// Отделение
         /// </summary>
         public int DepartmentId { get; set; }
-        public virtual DepartmentDto Department { get; set; }
     }
 }

@@ -22,8 +22,10 @@ namespace Domain.MapperProfiles
             CreateMap<LocalCity, LocalCityDto>();
             CreateMap<RegionDto, Region>();
             CreateMap<Region, RegionDto>();
-            CreateMap<School, SchoolDto>();
-            CreateMap<SchoolDto, School>();
+            CreateMap<School, SchoolDto>()
+            .ForMember(dest => dest.RegionId, opt => opt.MapFrom(src => src.CityId));
+            CreateMap<SchoolDto, School>()
+                .ForMember(dest => dest.CityId, opt => opt.MapFrom(src => src.RegionId));
             CreateMap<GroupDto, Group>();
             CreateMap<Group, Group>();
 

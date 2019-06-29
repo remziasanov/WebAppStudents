@@ -1,5 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.RepositoryInterfaces.Base;
+using System.Linq;
+
 namespace Domain.RepositoryInterfaces
 {
     /// <summary>
@@ -7,6 +9,7 @@ namespace Domain.RepositoryInterfaces
     /// </summary>
     public interface IGroupRepository : IRepositoryBase<Group, int>
     {
-
+        IQueryable<Group> GetAll(int DepartmentId);
+        IQueryable<Group> GetAll(string DepartmentName);
     }
 }
