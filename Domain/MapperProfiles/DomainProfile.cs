@@ -27,7 +27,7 @@ namespace Domain.MapperProfiles
             CreateMap<SchoolDto, School>()
                 .ForMember(dest => dest.CityId, opt => opt.MapFrom(src => src.RegionId));
             CreateMap<GroupDto, Group>();
-            CreateMap<Group, Group>();
+            CreateMap<Group, GroupDto>();
 
         }
     }

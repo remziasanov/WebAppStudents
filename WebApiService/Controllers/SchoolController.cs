@@ -18,13 +18,23 @@ namespace WebApiService.Controllers
         {
             _schoolService = schoolService;
         }
-
+        // GET: api/School
         [HttpGet]
         public List<SchoolDto> Get()
         {
             IList<SchoolDto> schoolDtos = _schoolService.GetAll();
             return schoolDtos.ToList();
         }
+        // GET: api/School/5
+        //[HttpGet("{id}")]
+        //public List<SchoolDto> GetById(int id)
+        //{
+        //    List<SchoolDto> schoolDtos = _schoolService.GetAll(id).ToList();
+        //    if (schoolDtos != null)
+        //        return schoolDtos;
+        //    else
+        //        return null;
+        //}
 
         [HttpGet("{regionname}")]
         public List<SchoolDto> GetByRegionName(string regionname)
@@ -34,13 +44,6 @@ namespace WebApiService.Controllers
                 return schoolDtos;
             else
                 return null;
-        }
-
-        // GET: api/School/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
         }
 
         // POST: api/School

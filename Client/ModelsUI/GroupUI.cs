@@ -14,6 +14,6 @@ namespace Client.ModelsUI
         /// <summary>
         /// Отделение
         /// </summary>
-        public virtual DepartmentUI Department { get; set; }
+        public int DepartmentId { get; set; }
     }
 }

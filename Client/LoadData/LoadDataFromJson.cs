@@ -47,5 +47,39 @@ namespace Client.LoadData
             return results;
 
         }
+
+
+        public static async Task<TypeModel> LoadModel(string url)
+        {
+            // Для отключения проверки сертификата, использовать только для тестирования
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            ServicePointManager.ServerCertificateValidationCallback +=
+                (sender, cert, chain, sslPolicyErrors) => { return true; };
+            TypeModel result = null;
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(url);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new
+                  MediaTypeWithQualityHeaderValue("application/json"));
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync(url);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string data = await response.Content.ReadAsStringAsync();
+                        result = JsonConvert.DeserializeObject<TypeModel>(data);
+
+                    }
+                }
+                catch (System.Net.Http.HttpRequestException)
+                {
+                    return null;
+                }
+            }
+            return result;
+
+
+        }
     }
 }

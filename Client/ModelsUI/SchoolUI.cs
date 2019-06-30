@@ -10,6 +10,6 @@ namespace Client.ModelsUI
     class SchoolUI : EntityBaseUI<int>
     {
         public string Title { get; set; }
-        public virtual LocalCityUI City { get; set; }
+        public int RegionId { get; set; }
     }
 }
