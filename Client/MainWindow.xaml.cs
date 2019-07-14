@@ -208,9 +208,11 @@ namespace Client
 
         private async void BtnSaveStudent_Click(object sender, RoutedEventArgs e)
         {
-            string currentcity = cities.SelectedItem.ToString();
-            if (currentcity != null)
-                student.LocalCity = await LoadDataFromJson<LocalCityUI>.LoadModel("https://localhost:44357/api/citylocal/" + currentcity);
+            string region = regions.SelectedItem.ToString();
+            string group1 = groupName1.SelectedItem.ToString();
+            bool? passporti = passport.IsChecked;
+            bool? sex = male.IsChecked;
+
             student.Name = name.Text;
             student.Surname = surname.Text;
             student.Fathername = fathername.Text;
@@ -220,9 +222,45 @@ namespace Client
             student.SNILS = snils.Text;
             student.MedPolis = polis.Text;
             student.Address = address.Text;
-            string gr1 = groupName1.SelectedItem.ToString();
-            student.Group1 = await LoadDataFromJson<GroupUI>.LoadModel("https://localhost:44357/api/group/" + groupName1.SelectedItem.ToString());
+            student.MainDocument = new DocumentUI
+            {
+                DocumentType = (passporti.HasValue &&
+            passporti.Value ? DocumentType.Passport : DocumentType.Svidetelstvo),
+                DateOfBirth = Convert.ToDateTime(date.Text),
+                Gender = (sex.HasValue && sex.Value ? Gender.Male : Gender.Female),
+                Number = number.Text,
+                Seria = seria.Text
+            };
+            student.ApartmentNumber = Convert.ToUInt16(apartment.Text);
 
+            student.Parent1 = parent1Name.Text;
+            student.Parent1Phone = parent1Phone.Text;
+
+            student.Group1 = await LoadDataFromJson<GroupUI>.LoadModel(
+                "https://localhost:44357/api/group/getGroup/" + group1);
+            if (groupName2.SelectedIndex >= 0)
+            {
+                string group2 = groupName2.SelectedItem.ToString();
+                student.Group2 = await LoadDataFromJson<GroupUI>.LoadModel(
+                  "https://localhost:44357/api/group/getGroup/" + group2);
+                if (groupName3.SelectedIndex >= 0)
+                {
+                    string group3 = groupName2.SelectedItem.ToString();
+                    student.Group3 = await LoadDataFromJson<GroupUI>.LoadModel(
+                      "https://localhost:44357/api/group/getGroup/" + group3);
+                }
+            }
+            string result = await LoadDataFromJson<StudentUI>.Add("https://localhost:44357/api/values/", student);
+            if (result != null)
+            {
+                ErrorLabel.Content = result;
+                ErrorLabel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ErrorLabel.Content = "student added";
+                ErrorLabel.Visibility = Visibility.Visible;
+            }
 
         }
         private async void GroupName1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -260,6 +298,13 @@ namespace Client
                     }
                 }
             }
+        }
+
+        private async void Cities_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string currentcity = cities.SelectedItem.ToString();
+            student.LocalCity = await LoadDataFromJson<LocalCityUI>.LoadModel(
+               "https://localhost:44357/api/citylocal/getbytitle/" + currentcity);
         }
     }
 }

@@ -49,7 +49,7 @@
         <Label Content="Серия" HorizontalAlignment="Left" Margin="10,457,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox HorizontalAlignment="Left" Height="24" Margin="124,488,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="number"/>
         <TextBox HorizontalAlignment="Left" Height="24" Margin="124,461,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="seria"/>
-        <DatePicker HorizontalAlignment="Left" Margin="124,318,0,0" VerticalAlignment="Top" Width="120"/>
+        <DatePicker Name="date" HorizontalAlignment="Left" Margin="124,318,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Дата рождения" HorizontalAlignment="Left" Margin="10,315,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Button Name="btnSaveStudent"  Content="Добавить" HorizontalAlignment="Left" Margin="141,476,0,0" VerticalAlignment="Top" Width="132" FontFamily="Playbill" FontSize="20" Height="32"  Grid.Column="3" Click="BtnSaveStudent_Click"/>
         <ComboBox Name="form" HorizontalAlignment="Left" Margin="124,141,0,0" VerticalAlignment="Top" Width="60" DropDownOpened="Form_DropDownOpened"/>
@@ -63,7 +63,7 @@
         <Label Content="Родитель 1" HorizontalAlignment="Left" Margin="266,164,0,0" VerticalAlignment="Top" FontSize="14" Grid.ColumnSpan="2"/>
         <Label Content="Родитель 2" HorizontalAlignment="Left" Margin="266,193,0,0" VerticalAlignment="Top" FontSize="14" Grid.ColumnSpan="2"/>
         <TextBox Name="parent1Name" HorizontalAlignment="Left" Height="23" Margin="25,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" Grid.ColumnSpan="2" Cursor="None" IsUndoEnabled="True" Grid.Column="2"/>
-        <TextBox Name="parent1Phone" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="54,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
+        <TextBox Name="parent1Phone" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="54,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" Text="+7(" />
         <TextBox Name="parent2Name" HorizontalAlignment="Left" Height="23" Margin="25,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" Grid.ColumnSpan="2" Grid.Column="2"/>
         <TextBox Name = "parent2Phone" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="54,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
         <ComboBox HorizontalAlignment="Left" Margin="124,368,0,0" VerticalAlignment="Top" Width="120" Name="schools" />
@@ -74,7 +74,7 @@
         <Label Content="Название" HorizontalAlignment="Left" Margin="54,10,0,0" VerticalAlignment="Top" Width="169" Grid.Column="3"/>
         <ComboBox x:Name="departmentName1" HorizontalAlignment="Left" Margin="24,36,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.ColumnSpan="2" Grid.Column="2" DropDownOpened="DepartmentName1_DropDownOpened" IsEditable="True" SelectionChanged="DepartmentName1_SelectionChanged"/>
         <Label Content="Город" HorizontalAlignment="Left" Margin="10,237,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="cities" HorizontalAlignment="Left" Margin="124,241,0,0" VerticalAlignment="Top" Width="120" DropDownOpened="Cities_DropDownOpened" />
+        <ComboBox x:Name="cities" HorizontalAlignment="Left" Margin="124,241,0,0" VerticalAlignment="Top" Width="120" DropDownOpened="Cities_DropDownOpened" SelectionChanged="Cities_SelectionChanged" />
         <Label Content="Ошибка" HorizontalAlignment="Left" Margin="54,517,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Name="ErrorLabel" Foreground="Red" Grid.ColumnSpan="4" Width="571" Visibility="Hidden" />
         <CheckBox Content="" HorizontalAlignment="Left" Margin="255,374,0,0" VerticalAlignment="Top" Width="15" Height="15" Name="show_all_schools" Checked="Show_all_schools_Checked" Unchecked="Show_all_schools_Unchecked">
             <CheckBox.ToolTip>
