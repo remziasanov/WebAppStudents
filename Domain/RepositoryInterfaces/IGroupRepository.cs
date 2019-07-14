@@ -11,5 +11,6 @@ namespace Domain.RepositoryInterfaces
     {
         IQueryable<Group> GetAll(int DepartmentId);
         IQueryable<Group> GetAll(string DepartmentName);
+        Group Get(string groupName);
     }
 }

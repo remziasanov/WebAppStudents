@@ -10,5 +10,6 @@ namespace AppServices.Interfaces
     {
         IList<GroupDto> GetAll(int departmentId);
         IList<GroupDto> GetAll(string departmentName);
+        GroupDto Get(string groupName);
     }
 }

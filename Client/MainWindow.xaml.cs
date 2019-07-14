@@ -221,7 +221,7 @@ namespace Client
             student.MedPolis = polis.Text;
             student.Address = address.Text;
             string gr1 = groupName1.SelectedItem.ToString();
-            student.Group1 = await LoadDataFromJson<GroupUI>.LoadModel("https://localhost:44357/api/citylocal/" + currentcity);
+            student.Group1 = await LoadDataFromJson<GroupUI>.LoadModel("https://localhost:44357/api/group/" + groupName1.SelectedItem.ToString());
 
 
         }

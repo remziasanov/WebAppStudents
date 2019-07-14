@@ -16,5 +16,6 @@ namespace Domain.RepositoryInterfaces
         // можно добавить дополнительные методы для работы с населенными пунктами и городами
         IQueryable<LocalCity> GetAll(int RegionId);
         IQueryable<LocalCity> GetAll(string RegionName);
+        LocalCity Get(string cityname);
     }
 }

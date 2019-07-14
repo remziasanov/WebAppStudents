@@ -35,6 +35,16 @@ namespace WebApiService.Controllers
             else
                 return null;
         }
+        [HttpGet]
+        [Route("getGroup/{groupName}")]
+        public GroupDto GetGroup(string groupName)
+        {
+            GroupDto group = _groupService.Get(groupName);
+            if (group != null)
+                return group;
+            else
+                return null;
+        }
 
         //[HttpGet("{departmentId}")]
         //public List<GroupDto> GetByRegionName(int departmentId)
@@ -46,7 +56,7 @@ namespace WebApiService.Controllers
         //        return null;
         //}
 
-       
+
         // POST: api/Group
         [HttpPost]
         public void Post([FromBody] string value)

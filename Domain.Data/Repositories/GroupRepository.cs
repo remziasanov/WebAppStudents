@@ -11,6 +11,13 @@ namespace Domain.Data.Repositories
         public GroupRepository(StudentDataContext context) : base(context)
         {
         }
+
+        public Group Get(string groupName)
+        {
+            Group group = _dbContext.Groups.SingleOrDefault(x => x.Title == groupName);
+            return group;
+        }
+
         public IQueryable<Group> GetAll(int DepartmentId)
         {
             IQueryable<Group> groups = _dbContext.Groups

@@ -55,7 +55,7 @@ namespace Client.LoadData
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             ServicePointManager.ServerCertificateValidationCallback +=
                 (sender, cert, chain, sslPolicyErrors) => { return true; };
-            TypeModel result = null;
+            TypeModel result=null;
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri(url);
@@ -68,6 +68,7 @@ namespace Client.LoadData
                     if (response.IsSuccessStatusCode)
                     {
                         string data = await response.Content.ReadAsStringAsync();
+                        if(data!=null)
                         result = JsonConvert.DeserializeObject<TypeModel>(data);
 
                     }

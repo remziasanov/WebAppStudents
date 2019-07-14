@@ -36,6 +36,13 @@ namespace AppServices.Services
             throw new NotImplementedException();
         }
 
+        public GroupDto Get(string groupName)
+        {
+            Group group = _groupRepository.Get(groupName);
+            GroupDto groupDto = _mapper.Map<GroupDto>(group);
+            return groupDto;
+        }
+
         public IList<GroupDto> GetAll(int departmentId)
         {
             IList<Group> Groups = _groupRepository.GetAll(departmentId).ToList();

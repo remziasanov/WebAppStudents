@@ -14,7 +14,13 @@ namespace Domain.MapperProfiles
         /// </summary>
         public DomainProfile()
         {
-            CreateMap<StudentDto, Student>();
+            CreateMap<StudentDto, Student>()
+                .ForMember(x => x.Id, opt => opt.Ignore())
+                 .ForMember(x => x.Group1, opt => opt.Ignore())
+                 .ForMember(x => x.Group2, opt => opt.Ignore())
+                 .ForMember(x => x.Group3, opt => opt.Ignore())
+                 .ForMember(x => x.LocalCity, opt => opt.Ignore())
+                 .ForMember(x => x.MainDocument, opt => opt.Ignore());
             CreateMap<Student, StudentDto>();
             CreateMap<Department, DepartmentDto>();
             CreateMap<DepartmentDto, Department>();
