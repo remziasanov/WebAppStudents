@@ -22,9 +22,10 @@ namespace Domain.Data.Repositories.Base
 
         public virtual async Task<TEntity> Create(TEntity entity)
         {
-            _dbContext.Set<TEntity>().Add(entity);
-            await _dbContext.SaveChangesAsync();
-            return entity;
+            var res = await _dbContext.Set<TEntity>().AddAsync(entity);
+            if (res.State == EntityState.Added)
+                return entity;
+            return null;
         }
 
         public virtual async Task<TEntity> Get(TId id)
@@ -45,17 +46,13 @@ namespace Domain.Data.Repositories.Base
             {
                 return entity;
             }
-
             _dbContext.Set<TEntity>().Remove(entity);
-            await _dbContext.SaveChangesAsync();
-
             return entity;
         }
 
         public virtual async Task<TEntity> Update(TEntity entity)
         {
             _dbContext.Set<TEntity>().Update(entity);
-            await _dbContext.SaveChangesAsync();
             return entity;
         }
     }
