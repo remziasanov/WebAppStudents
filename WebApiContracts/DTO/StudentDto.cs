@@ -16,12 +16,13 @@ namespace WebApiContracts.DTO
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Grade { get; set; }
+        public SchoolDto School { get; set; }
         public DocumentDto MainDocument { get; set; }
         public string SNILS { get; set; }
         public string MedPolis { get; set; }
         public LocalCityDto LocalCity { get; set; }
         public string Address { get; set; }
-        public uint ApartmentNumber { get; set; }
+        public ushort? ApartmentNumber { get; set; }
         /// <summary>
         /// ФИО родителя1 
         /// </summary>

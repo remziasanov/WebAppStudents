@@ -11,6 +11,6 @@ namespace Client.ModelsUI.Base
         /// <summary>
         /// Индетификатор
         /// </summary>
-        public virtual TId Id { get; protected set; }
+        public virtual TId Id { get; set; }
     }
 }

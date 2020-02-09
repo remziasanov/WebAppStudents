@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.RepositoryInterfaces.Base;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Domain.RepositoryInterfaces
 {

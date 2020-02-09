@@ -21,20 +21,47 @@ namespace AppServices.Services
             _mapper = mapper;
         }
 
-
-        public Task<SchoolDto> Create(SchoolDto entity)
+        public async Task<SchoolDto> Create(SchoolDto entity)
         {
-            throw new NotImplementedException();
+            School result = null;
+            try
+            {
+                result = _mapper.Map<School>(entity);
+            }
+            catch (Exception ex)
+            {
+                string mess = ex.Message.ToString();
+                throw new Exception();
+            }
+            School std = await _schoolRepository.Create(result);
+            if (std != null)
+                return entity;
+            return null;
         }
 
-        public Task<SchoolDto> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            School std = await _schoolRepository.Get(id);
+            if (std != null)
+            {
+                await _schoolRepository.Delete(id);
+                return true;
+            }
+            return false;
         }
 
-        public Task<SchoolDto> Get(int id)
+        public async Task<SchoolDto> Get(int id)
         {
-            throw new NotImplementedException();
+            School school = await _schoolRepository.Get(id);
+            SchoolDto schoolDto = _mapper.Map<SchoolDto>(school);
+            return schoolDto;
+        }
+
+        public async Task<SchoolDto> Get(string SchoolName)
+        {
+            School school = await _schoolRepository.Get(SchoolName);
+            SchoolDto SchoolDto = _mapper.Map<SchoolDto>(school);
+            return SchoolDto;
         }
 
         public IList<SchoolDto> GetAll(int CityId)
@@ -58,9 +85,11 @@ namespace AppServices.Services
             return SchoolsDto;
         }
 
-        public Task<SchoolDto> Update(SchoolDto entity)
+        public async Task<SchoolDto> Update(SchoolDto entity)
         {
-            throw new NotImplementedException();
+            var result = _mapper.Map<School>(entity);
+            await _schoolRepository.Update(result);
+            return entity;
         }
     }
 }

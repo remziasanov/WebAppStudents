@@ -13,12 +13,14 @@ namespace Domain.Data.Repositories
         public CityLocalRepository(StudentDataContext context) : base(context)
         {
         }
+
         public LocalCity Get(string cityname)
         {
             IQueryable<LocalCity> cities = _dbContext.Cities
                                             .Where(x => x.CityName == cityname);
             return cities.SingleOrDefault();
         }
+
         public IQueryable<LocalCity> GetAll(int RegionId)
         {
             IQueryable<LocalCity> cities = _dbContext.Cities
@@ -34,5 +36,6 @@ namespace Domain.Data.Repositories
             }
             return null;
         }
+        
     }
 }

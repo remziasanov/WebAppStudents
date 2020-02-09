@@ -29,9 +29,8 @@ namespace WebApiService.Controllers
             return citiesDtos.ToList();
         }
 
-        
         [HttpGet("{regionname}")]
-        public List<LocalCityDto> GetByTitle(string regionname)
+        public List<LocalCityDto> GetByRegionName(string regionname)
         {
             List<LocalCityDto> citiesDtos = _cityService.GetAll(regionname).ToList();
 
@@ -41,29 +40,36 @@ namespace WebApiService.Controllers
                 return null;
         }
 
-        //// GET: api/CityLocal/5
-        //[HttpGet("{id}", Name = "Get")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        [HttpGet]
+        [Route("getbytitle/{cityname}")]
+        public ActionResult<LocalCityDto> GetByTitle(string cityname)
+        {
+            LocalCityDto localCityDto = _cityService.Get(cityname);
+            if (localCityDto != null)
+                return localCityDto;
+            else
+                return null;
+        }
 
         // POST: api/CityLocal
         [HttpPost]
         public void Post([FromBody] string value)
         {
+
         }
 
         // PUT: api/CityLocal/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+
         }
     }
 }

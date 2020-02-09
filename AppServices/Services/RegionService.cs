@@ -23,31 +23,52 @@ namespace AppServices.Services
             _mapper = mapper;
         }
 
-        public Task<RegionDto> Create(RegionDto entity)
+        public async Task<RegionDto> Create(RegionDto entity)
         {
-            throw new NotImplementedException();
+            Region result = null;
+            try
+            {
+                result = _mapper.Map<Region>(entity);
+            }
+            catch (Exception ex)
+            {
+                string mess = ex.Message.ToString();
+                throw new Exception();
+            }
+            Region std = await _regionRepository.Create(result);
+            if (std != null)
+                return entity;
+            return null;
         }
 
-        public Task<RegionDto> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            Region std = await _regionRepository.Get(id);
+            if (std != null)
+            {
+                await _regionRepository.Delete(id);
+                return true;
+            }
+            return false;
         }
 
-        public Task<RegionDto> Get(int id)
+        public async Task<RegionDto> Get(int id)
         {
-            throw new NotImplementedException();
+            Region region = await _regionRepository.Get(id);
+            RegionDto regionDto = _mapper.Map<RegionDto>(region);
+            return regionDto;
         }
 
         public async Task<RegionDto> Get(string title)
         {
-            List<Region> regions = await _regionRepository.GetAll().ToListAsync();
-            Region region = regions.SingleOrDefault(x => x.NameRegion == title);
-            if (region != null)
+            IQueryable<Region> region = _regionRepository.GetAll().Where(x => x.NameRegion == title);
+            if(region != null)
             {
-                RegionDto regionDto = _mapper.Map<RegionDto>(region);
+                RegionDto regionDto = _mapper.Map<RegionDto>(region.SingleAsync());
                 return regionDto;
             }
             return null;
+
         }
 
         public IList<RegionDto> GetAll()
@@ -57,9 +78,11 @@ namespace AppServices.Services
             return regionsDto;
         }
 
-        public Task<RegionDto> Update(RegionDto entity)
+        public async Task<RegionDto> Update(RegionDto entity)
         {
-            throw new NotImplementedException();
+            var result = _mapper.Map<Region>(entity);
+            await _regionRepository.Update(result);
+            return entity;
         }
     }
 }

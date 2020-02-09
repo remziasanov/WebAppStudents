@@ -21,19 +21,40 @@ namespace AppServices.Services
             _mapper = mapper;
         }
 
-        public Task<GroupDto> Create(GroupDto entity)
+        public async Task<GroupDto> Create(GroupDto entity)
         {
-            throw new NotImplementedException();
+            Group result = null;
+            try
+            {
+                result = _mapper.Map<Group>(entity);
+            }
+            catch (Exception ex)
+            {
+                string mess = ex.Message.ToString();
+                throw new Exception();
+            }
+            Group std = await _groupRepository.Create(result);
+            if (std != null)
+                return entity;
+            return null;
         }
 
-        public Task<GroupDto> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            Group std = await _groupRepository.Get(id);
+            if (std != null)
+            {
+                await _groupRepository.Delete(id);
+                return true;
+            }
+            return false;
         }
 
-        public Task<GroupDto> Get(int id)
+        public async Task<GroupDto> Get(int id)
         {
-            throw new NotImplementedException();
+            Group group = await _groupRepository.Get(id);
+            GroupDto groupDto = _mapper.Map<GroupDto>(group);
+            return groupDto;
         }
 
         public GroupDto Get(string groupName)
@@ -64,9 +85,11 @@ namespace AppServices.Services
             return GroupsDto;
         }
 
-        public Task<GroupDto> Update(GroupDto entity)
+        public async Task<GroupDto> Update(GroupDto entity)
         {
-            throw new NotImplementedException();
+            var result = _mapper.Map<Group>(entity);
+            await _groupRepository.Update(result);
+            return entity;
         }
     }
 }

@@ -30,7 +30,7 @@ namespace WebApiService
         {
 
             services.AddTransient<IMapper, Mapper>();
-            services.Register(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\source\repos\StudentsMAN\Domain\DataContext\Database4.mdf;Integrated Security=True");
+            services.Register(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Пользователь\Desktop\WebApp23.11\Domain\DataContext\Database4.0.mdf;Integrated Security=True");
 
             ///конструктор маппера
             var mappingConfiguration = new MapperConfiguration(mc =>

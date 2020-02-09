@@ -1,0 +1,101 @@
+﻿<Window x:Class="Client.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        Title="Settings" Height="450" Width="800" FontSize="14" SizeChanged="Window_SizeChanged">
+    <Grid>
+        <TabControl Grid.Row="0">
+            <TabItem Header="Регионы">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Grid.Row="1"></DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Города">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="133*"/>
+                        <ColumnDefinition Width="654*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Grid.Row="1" Grid.ColumnSpan="2"></DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Школы" IsSelected="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="1" VerticalContentAlignment="Bottom">Название</Label>
+                        <Label Grid.Row="3" VerticalContentAlignment="Bottom">Город</Label>
+                        <TextBox Name="TitleSchool" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Bottom"></TextBox>
+                        <ComboBox Name="Cities" Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Bottom"></ComboBox>
+                        <Button Name="Add" Click="Add_MouseUp" Grid.Row="0" Grid.Column="3" Height="30" Grid.RowSpan="5" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="0, 10">Добавить</Button>
+                        <Button Name="Save" Click="Save_MouseUp" Grid.Row="0" Grid.Column="3" Height="30" Grid.RowSpan="5" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="0, 10">Сохранить</Button>
+                        <Button Name="Delete" Grid.Row="0" Grid.Column="3" Height="30" Grid.RowSpan="5" VerticalContentAlignment="Center" VerticalAlignment="Bottom" Margin="0, 10">Удалить</Button>
+                    </Grid>
+                    <DataGrid AutoGenerateColumns="False" Name="SchoolGrid" Grid.Row="1">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Path=Id}" Header="№"/>
+                            <DataGridTextColumn Binding="{Binding Path=Title}" Header="Название"/>
+                            <DataGridTextColumn Binding="{Binding Path=City}" Header="Город"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Отделения">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Grid.Row="1"></DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Кружки">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Grid.Row="1"></DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Учителя">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Grid.Row="1"></DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

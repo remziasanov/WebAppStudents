@@ -20,19 +20,40 @@ namespace AppServices.Services
             _departmentRepository = departmentRepository;
             _mapper = mapper;
         }
-        public Task<DepartmentDto> Create(DepartmentDto entity)
+        public async Task<DepartmentDto> Create(DepartmentDto entity)
         {
-            throw new NotImplementedException();
+            Department result = null;
+            try
+            {
+                result = _mapper.Map<Department>(entity);
+            }
+            catch (Exception ex)
+            {
+                string mess = ex.Message.ToString();
+                throw new Exception();
+            }
+            Department std = await _departmentRepository.Create(result);
+            if (std != null)
+                return entity;
+            return null;
         }
 
-        public Task<DepartmentDto> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            Department std = await _departmentRepository.Get(id);
+            if (std != null)
+            {
+                await _departmentRepository.Delete(id);
+                return true;
+            }
+            return false;
         }
 
-        public Task<DepartmentDto> Get(int id)
+        public async Task<DepartmentDto> Get(int id)
         {
-            throw new NotImplementedException();
+            Department department = await _departmentRepository.Get(id);
+            DepartmentDto departmentDto = _mapper.Map<DepartmentDto>(department);
+            return departmentDto;
         }
 
         public IList<DepartmentDto> GetAll()
@@ -42,9 +63,11 @@ namespace AppServices.Services
             return departmentsDto;
         }
 
-        public Task<DepartmentDto> Update(DepartmentDto entity)
+        public async Task<DepartmentDto> Update(DepartmentDto entity)
         {
-            throw new NotImplementedException();
+            var result = _mapper.Map<Department>(entity);
+            await _departmentRepository.Update(result);
+            return entity;
         }
     }
 }

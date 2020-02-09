@@ -2,7 +2,9 @@
 using Domain.RepositoryInterfaces.Base;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Domain.RepositoryInterfaces
 {
@@ -11,6 +13,6 @@ namespace Domain.RepositoryInterfaces
     /// </summary>
     public interface IStudentRepository : IRepositoryBase<Student, int>
     {
-        // для дополнительных методов для работы со студентами
+
     }
 }

@@ -1,8 +1,9 @@
-﻿using Domain.Data.Repositories.Base;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Domain.Data.Repositories.Base;
 using Domain.DataContext;
 using Domain.Entities;
 using Domain.RepositoryInterfaces;
-using System.Linq;
 
 namespace Domain.Data.Repositories
 {
@@ -10,12 +11,14 @@ namespace Domain.Data.Repositories
     {
         public GroupRepository(StudentDataContext context) : base(context)
         {
+
         }
 
         public Group Get(string groupName)
         {
-            Group group = _dbContext.Groups.SingleOrDefault(x => x.Title == groupName);
-            return group;
+            IQueryable<Group> groups = _dbContext.Groups
+                                             .Where(x => x.Title == groupName);
+            return groups.SingleOrDefault();
         }
 
         public IQueryable<Group> GetAll(int DepartmentId)
@@ -24,6 +27,7 @@ namespace Domain.Data.Repositories
                                             .Where(x => x.DepartmentId == DepartmentId);
             return groups;
         }
+
 
         public IQueryable<Group> GetAll(string DepartmentName)
         {

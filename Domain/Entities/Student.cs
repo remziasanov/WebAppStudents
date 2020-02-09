@@ -13,17 +13,20 @@ namespace Domain.Entities
     {
         [Required]
         public string Name { get; set; }
+        [Required]
         public string Surname { get; set; }
         public string Fathername { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Grade { get; set; }
+        public School School { get; set; }
         [Required]
         public Document MainDocument { get; set; }
         public string SNILS { get; set; }
         public string MedPolis { get; set; }
         [Required]
         public LocalCity LocalCity { get; set; }
+        [Required]
         public string Address { get; set; }
         public ushort? ApartmentNumber { get; set; }
         /// <summary>

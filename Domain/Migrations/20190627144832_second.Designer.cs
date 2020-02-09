@@ -4,14 +4,16 @@ using Domain.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Domain.Migrations
 {
     [DbContext(typeof(StudentDataContext))]
-    partial class StudentDataContextModelSnapshot : ModelSnapshot
+    [Migration("20190627144832_second")]
+    partial class second
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -163,8 +165,6 @@ namespace Domain.Migrations
 
                     b.Property<string>("SNILS");
 
-                    b.Property<int?>("SchoolId");
-
                     b.Property<string>("Surname")
                         .IsRequired();
 
@@ -179,8 +179,6 @@ namespace Domain.Migrations
                     b.HasIndex("LocalCityId");
 
                     b.HasIndex("MainDocumentId");
-
-                    b.HasIndex("SchoolId");
 
                     b.ToTable("Students");
                 });
@@ -225,10 +223,6 @@ namespace Domain.Migrations
                         .WithMany()
                         .HasForeignKey("MainDocumentId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Domain.Entities.School", "School")
-                        .WithMany()
-                        .HasForeignKey("SchoolId");
                 });
 #pragma warning restore 612, 618
         }

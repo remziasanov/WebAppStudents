@@ -36,6 +36,15 @@ namespace WebApiService.Controllers
             else
                 return null;
         }
+        [HttpGet("id/{value}", Name = "GetById")]
+        public async Task<RegionDto> GetById(int value)
+        {
+            RegionDto regionDto = await _regionService.Get(value);
+            if (regionDto != null)
+                return regionDto;
+            else
+                return null;
+        }
 
         // POST: api/Region
         [HttpPost]

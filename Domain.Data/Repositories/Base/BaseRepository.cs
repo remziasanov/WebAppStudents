@@ -4,8 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Win32.SafeHandles;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
+using System.Linq.Expressions;
 
 namespace Domain.Data.Repositories.Base
 {
@@ -19,13 +22,11 @@ namespace Domain.Data.Repositories.Base
         {
             _dbContext = dbContext;
         }
-
         public virtual async Task<TEntity> Create(TEntity entity)
         {
-            var res = await _dbContext.Set<TEntity>().AddAsync(entity);
-            if (res.State == EntityState.Added)
-                return entity;
-            return null;
+            _dbContext.Set<TEntity>().Add(entity);
+            await _dbContext.SaveChangesAsync();
+            return entity;
         }
 
         public virtual async Task<TEntity> Get(TId id)
@@ -46,14 +47,25 @@ namespace Domain.Data.Repositories.Base
             {
                 return entity;
             }
+
             _dbContext.Set<TEntity>().Remove(entity);
+            await _dbContext.SaveChangesAsync();
+
             return entity;
         }
 
         public virtual async Task<TEntity> Update(TEntity entity)
         {
             _dbContext.Set<TEntity>().Update(entity);
+            await _dbContext.SaveChangesAsync();
             return entity;
         }
+
+        public virtual IQueryable<TEntity> GetAllWhere(Expression<Func<TEntity, bool>> predicate)
+        {
+            var result = _dbContext.Set<TEntity>().Where(predicate);
+            return result;
+        }
+        
     }
 }

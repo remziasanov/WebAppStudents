@@ -14,13 +14,12 @@ namespace Domain.MapperProfiles
         /// </summary>
         public DomainProfile()
         {
+            CreateMap<GroupDto, Group>();
+            CreateMap<Group, GroupDto>();
             CreateMap<StudentDto, Student>()
-                .ForMember(x => x.Id, opt => opt.Ignore())
-                 .ForMember(x => x.Group1, opt => opt.Ignore())
-                 .ForMember(x => x.Group2, opt => opt.Ignore())
-                 .ForMember(x => x.Group3, opt => opt.Ignore())
-                 .ForMember(x => x.LocalCity, opt => opt.Ignore())
-                 .ForMember(x => x.MainDocument, opt => opt.Ignore());
+                 .ForMember(x => x.Id, opt => opt.Ignore());
+            CreateMap<Document, DocumentDto>();
+            CreateMap<DocumentDto, Document>();
             CreateMap<Student, StudentDto>();
             CreateMap<Department, DepartmentDto>();
             CreateMap<DepartmentDto, Department>();
@@ -29,12 +28,10 @@ namespace Domain.MapperProfiles
             CreateMap<RegionDto, Region>();
             CreateMap<Region, RegionDto>();
             CreateMap<School, SchoolDto>()
-            .ForMember(dest => dest.RegionId, opt => opt.MapFrom(src => src.CityId));
+                .ForMember(dest => dest.RegionId, opt => opt.MapFrom(src => src.CityId));
             CreateMap<SchoolDto, School>()
                 .ForMember(dest => dest.CityId, opt => opt.MapFrom(src => src.RegionId));
-            CreateMap<GroupDto, Group>();
-            CreateMap<Group, GroupDto>();
-
+            
         }
     }
 }

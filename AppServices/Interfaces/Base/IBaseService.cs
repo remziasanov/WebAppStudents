@@ -13,6 +13,6 @@ namespace AppServices.Interfaces.Base
         Task<TEntity> Create(TEntity entity);
         Task<TEntity> Update(TEntity entity);
         Task<TEntity> Get(TId id);
-        Task<TEntity> Delete(TId id);
+        Task<bool> Delete(TId id);
     }
 }

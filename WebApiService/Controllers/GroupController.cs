@@ -11,7 +11,7 @@ namespace WebApiService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class GroupController : ControllerBase
+    public class GroupController : Controller
     {
         protected readonly IGroupService _groupService;
         public GroupController(IGroupService groupService)
@@ -36,43 +36,94 @@ namespace WebApiService.Controllers
                 return null;
         }
         [HttpGet]
-        [Route("getGroup/{groupName}")]
-        public GroupDto GetGroup(string groupName)
+        [Route("name/{groupName}")]
+        public ActionResult<GroupDto> GetGroup(string groupName)
         {
-            GroupDto group = _groupService.Get(groupName);
-            if (group != null)
-                return group;
+            GroupDto groupDto = _groupService.Get(groupName);
+            if (groupDto != null)
+                return groupDto;
             else
                 return null;
         }
 
-        //[HttpGet("{departmentId}")]
-        //public List<GroupDto> GetByRegionName(int departmentId)
-        //{
-        //    List<GroupDto> groupDtos = _groupService.GetAll(departmentId).ToList();
-        //    if (groupDtos != null)
-        //        return groupDtos;
-        //    else
-        //        return null;
-        //}
+        public ActionResult Index()
+        {
+            return View();
+        }
 
+        // GET: Group/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
 
-        // POST: api/Group
+        // GET: Group/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Group/Create
         [HttpPost]
-        public void Post([FromBody] string value)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(IFormCollection collection)
         {
+            try
+            {
+                // TODO: Add insert logic here
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
 
-        // PUT: api/Group/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // GET: Group/Edit/5
+        public ActionResult Edit(int id)
         {
+            return View();
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // POST: Group/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, IFormCollection collection)
         {
+            try
+            {
+                // TODO: Add update logic here
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Group/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: Group/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, IFormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

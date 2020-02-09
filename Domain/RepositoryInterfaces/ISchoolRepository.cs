@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Domain.RepositoryInterfaces
 {
@@ -14,5 +15,6 @@ namespace Domain.RepositoryInterfaces
     {
         IQueryable<School> GetAll(int RegionId);
         IQueryable<School> GetAll(string CityName);
+        Task<School> Get(string SchoolName);
     }
 }

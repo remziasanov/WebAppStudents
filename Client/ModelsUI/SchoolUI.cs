@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Client.ModelsUI
 {
-    class SchoolUI : EntityBaseUI<int>
+    public class SchoolUI : EntityBaseUI<int>
     {
         public string Title { get; set; }
         public int RegionId { get; set; }

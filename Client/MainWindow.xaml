@@ -5,84 +5,275 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="285*"/>
-            <ColumnDefinition Width="70*"/>
-            <ColumnDefinition Width="152*"/>
-            <ColumnDefinition Width="285*"/>
-        </Grid.ColumnDefinitions>
-        <Label Content="Имя" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Отчество" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="E-mail" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Телефон" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Класс" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="СНИЛС" HorizontalAlignment="Left" Margin="10,162,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Медполис" HorizontalAlignment="Left" Margin="10,188,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Регион" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Адрес" HorizontalAlignment="Left" Margin="10,262,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Номер кватиры" HorizontalAlignment="Left" Margin="10,289,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="1 кружок" HorizontalAlignment="Left" Margin="265,32,0,0" VerticalAlignment="Top" FontSize="14" Grid.ColumnSpan="2"/>
-        <Label Content="2 кружок" HorizontalAlignment="Left" Margin="265,60,0,0" VerticalAlignment="Top" FontSize="14" Grid.ColumnSpan="2"/>
-        <Label Content="3 кружок" HorizontalAlignment="Left" Margin="265,87,0,0" VerticalAlignment="Top" FontSize="14" Grid.ColumnSpan="2"/>
-        <RadioButton Content="М" HorizontalAlignment="Left" Margin="143,348,0,0" VerticalAlignment="Top" GroupName="Sex" Name="male" Width="33"/>
-        <RadioButton Content="Ж" HorizontalAlignment="Left" Margin="195,348,0,0" VerticalAlignment="Top" GroupName="Sex" Name="female" Width="32"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="124,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="name"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="124,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="surname"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="124,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="fathername"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="124,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="email"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="124,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="phone"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="124,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="snils"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="124,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="polis"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="124,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="address"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="124,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="apartment"/>
-        <RadioButton Content="Паспорт" HorizontalAlignment="Left" Margin="10,434,0,0" VerticalAlignment="Top" Name="passport" GroupName="documentType" FontSize="14" Width="109"/>
-        <RadioButton Content="Свидетельство" HorizontalAlignment="Left" Margin="124,434,0,0" VerticalAlignment="Top" GroupName="documentType" Name="svidetelstvo" FontSize="14" Width="120"/>
-        <Label Content="Тип документа" HorizontalAlignment="Left" Margin="54,402,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Пол" HorizontalAlignment="Left" Margin="10,340,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.438,0.231" Width="35" FontSize="14"/>
-        <Label Content="Номер" HorizontalAlignment="Left" Margin="10,484,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Серия" HorizontalAlignment="Left" Margin="10,457,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox HorizontalAlignment="Left" Height="24" Margin="124,488,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="number"/>
-        <TextBox HorizontalAlignment="Left" Height="24" Margin="124,461,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="seria"/>
-        <DatePicker Name="date" HorizontalAlignment="Left" Margin="124,318,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Дата рождения" HorizontalAlignment="Left" Margin="10,315,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Button Name="btnSaveStudent"  Content="Добавить" HorizontalAlignment="Left" Margin="141,476,0,0" VerticalAlignment="Top" Width="132" FontFamily="Playbill" FontSize="20" Height="32"  Grid.Column="3" Click="BtnSaveStudent_Click"/>
-        <ComboBox Name="form" HorizontalAlignment="Left" Margin="124,141,0,0" VerticalAlignment="Top" Width="60" DropDownOpened="Form_DropDownOpened"/>
-        <ComboBox Name="regions" HorizontalAlignment="Left" Margin="124,217,0,0" VerticalAlignment="Top" Width="120" DropDownOpened="Regions_DropDownOpened" IsEditable="True" SelectionChanged="Regions_SelectionChanged"/>
-        <ComboBox Name="letter"  HorizontalAlignment="Left" Margin="184,141,0,0" VerticalAlignment="Top" Width="60" DropDownOpened="Letter_DropDownOpened"/>
-        <ComboBox Name="groupName1" HorizontalAlignment="Left" Margin="54,36,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.Column="3" IsEditable="False" IsHitTestVisible="False" Focusable="False" SelectionChanged="GroupName1_SelectionChanged"/>
-        <ComboBox Name="groupName2" HorizontalAlignment="Left" Margin="54,64,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.Column="3" IsEditable="False" IsHitTestVisible="False" Focusable="False" SelectionChanged="GroupName2_SelectionChanged"/>
-        <ComboBox x:Name="departmentName2" HorizontalAlignment="Left" Margin="24,64,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.ColumnSpan="2" Grid.Column="2" DropDownOpened="DepartmentName2_DropDownOpened" IsEditable="False" IsHitTestVisible="False" Focusable="False" SelectionChanged="DepartmentName2_SelectionChanged" />
-        <ComboBox Name="groupName3" HorizontalAlignment="Left" Margin="54,91,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.Column="3" IsEditable="False" IsHitTestVisible="False" Focusable="False" SelectionChanged="GroupName3_SelectionChanged"/>
-        <ComboBox x:Name="departmentName3" HorizontalAlignment="Left" Margin="24,91,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.ColumnSpan="2" Grid.Column="2" DropDownOpened="DepartmentName3_DropDownOpened" IsEditable="False" IsHitTestVisible="False" Focusable="False" SelectionChanged="DepartmentName3_SelectionChanged"/>
-        <Label Content="Родитель 1" HorizontalAlignment="Left" Margin="266,164,0,0" VerticalAlignment="Top" FontSize="14" Grid.ColumnSpan="2"/>
-        <Label Content="Родитель 2" HorizontalAlignment="Left" Margin="266,193,0,0" VerticalAlignment="Top" FontSize="14" Grid.ColumnSpan="2"/>
-        <TextBox Name="parent1Name" HorizontalAlignment="Left" Height="23" Margin="25,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" Grid.ColumnSpan="2" Cursor="None" IsUndoEnabled="True" Grid.Column="2"/>
-        <TextBox Name="parent1Phone" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="54,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" Text="+7(" />
-        <TextBox Name="parent2Name" HorizontalAlignment="Left" Height="23" Margin="25,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" Grid.ColumnSpan="2" Grid.Column="2"/>
-        <TextBox Name = "parent2Phone" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="54,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
-        <ComboBox HorizontalAlignment="Left" Margin="124,368,0,0" VerticalAlignment="Top" Width="120" Name="schools" />
-        <Label Content="Школа" HorizontalAlignment="Left" Margin="10,365,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="ФИО" HorizontalAlignment="Left" Margin="25,141,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.855,0.231" Grid.ColumnSpan="2" Width="169" Grid.Column="2"/>
-        <Label Content="Телефон" HorizontalAlignment="Left" Margin="54,141,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.855,0.231" Width="169" Grid.Column="3"/>
-        <Label Content="Отдел" HorizontalAlignment="Left" Margin="24,10,0,0" VerticalAlignment="Top" Width="169" Grid.ColumnSpan="2" Grid.Column="2"/>
-        <Label Content="Название" HorizontalAlignment="Left" Margin="54,10,0,0" VerticalAlignment="Top" Width="169" Grid.Column="3"/>
-        <ComboBox x:Name="departmentName1" HorizontalAlignment="Left" Margin="24,36,0,0" VerticalAlignment="Top" Width="169" RenderTransformOrigin="1.044,0.545" Grid.ColumnSpan="2" Grid.Column="2" DropDownOpened="DepartmentName1_DropDownOpened" IsEditable="True" SelectionChanged="DepartmentName1_SelectionChanged"/>
-        <Label Content="Город" HorizontalAlignment="Left" Margin="10,237,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="cities" HorizontalAlignment="Left" Margin="124,241,0,0" VerticalAlignment="Top" Width="120" DropDownOpened="Cities_DropDownOpened" SelectionChanged="Cities_SelectionChanged" />
-        <Label Content="Ошибка" HorizontalAlignment="Left" Margin="54,517,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Name="ErrorLabel" Foreground="Red" Grid.ColumnSpan="4" Width="571" Visibility="Hidden" />
-        <CheckBox Content="" HorizontalAlignment="Left" Margin="255,374,0,0" VerticalAlignment="Top" Width="15" Height="15" Name="show_all_schools" Checked="Show_all_schools_Checked" Unchecked="Show_all_schools_Unchecked">
-            <CheckBox.ToolTip>
-                <ToolTip>
-                    Показать все школы
-                </ToolTip>
-            </CheckBox.ToolTip>
-        </CheckBox>
+        Title="МАН ИСКАТЕЛЬ" 
+        MinHeight="600" MinWidth="800"
+        MaxHeight="650" MaxWidth="850"
+        SizeChanged="Window_SizeChanged"
+        Name="window"
 
-    </Grid>
+     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="16"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto">
+    <!--Background="{DynamicResource MaterialDesignDarkBackground}"
+     FontFamily="{DynamicResource MaterialDesignFont}">-->
+    <Window.Resources>
+        <Style x:Key="WhiteStyle" TargetType="{x:Type Grid}">
+            <Setter Property="TextElement.Foreground" Value="Black"/>
+            <Setter Property="Label.Foreground" Value="Black"/>
+            <Setter Property="TextBox.BorderBrush" Value="Black"/>
+            <Setter Property="Background" Value="White"></Setter>
+        </Style>
+        <!--<Style x:Key="DarkStyle" TargetType="{x:Type Grid}">
+            <Setter Property="TextElement.Foreground" Value="White"/>
+            <Setter Property="Label.Foreground" Value="White"/>
+            <Setter Property="TextBox.BorderBrush" Value="White"/>
+            <Setter Property="Background" Value="Black"></Setter>
+        </Style>-->
+        <Style x:Key="ButtonFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrush}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#F3F3F3" Offset="0"/>
+            <GradientStop Color="#EBEBEB" Offset="0.5"/>
+            <GradientStop Color="#DDDDDD" Offset="0.5"/>
+            <GradientStop Color="#CDCDCD" Offset="1"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="ButtonNormalBorder" Color="#FF707070"/>
+        <Style x:Key="ToggleButtonStyle1" TargetType="{x:Type ToggleButton}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <Border x:Name="on" Width="100" Height="25" Background="DarkGray" CornerRadius="4,4,4,4" Margin="10,0,0,0">
+                                <TextBlock x:Name="onText" Text="Светлая тема" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <!--<Border x:Name="off" Width="60" Height="25" Background="LightGray" CornerRadius="0,2,4,0">
+                                <TextBlock x:Name="offText" Text="Светлая" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>-->
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#ADADAD"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter TargetName="on" Property="Background" Value="Black"/>
+                                <Setter TargetName="onText" Property="Foreground" Value="White"/>
+                                <Setter TargetName="onText" Property="Text" Value="Темная тема"/>
+                            </Trigger>
+                            <!--<Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="off" Property="Background" Value="White"/>
+                                <Setter TargetName="offText" Property="Foreground" Value="Black"/>
+                            </Trigger>-->
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <TabControl Name="tabs" SelectionChanged="TabControl_SelectionChanged">
+        <TabItem Header="Добавление учащегося">
+            <Grid Name="WrapCreateGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Style="{StaticResource WhiteStyle}" Name="CreateGrid" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Name="templateGrid" Grid.ColumnSpan="4">
+                        <Grid.Resources>
+                            <Style TargetType="Label">
+                                <Setter Property="FontSize" Value="17" />
+                            </Style>
+                            <Style TargetType="TextBox">
+                                <Setter Property="FontSize" Value="17" />
+                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1.*"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition  Width="0.01*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="0.1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="0" VerticalAlignment="Center"  Grid.Row="0" Content="Имя" Name="namelbl"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="0" VerticalAlignment="Center"  Grid.Row="1" Content="Фамилия" Name="surnamelbl"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="0" VerticalAlignment="Center"  Grid.Row="2" Content="Отчество" Name="fathernamelbl"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="0" VerticalAlignment="Center"  Grid.Row="3" Content="E-mail" Name="emaillbl"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="0" VerticalAlignment="Center"  Grid.Row="4" Content="Телефон" Name="phonelbl"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="0" VerticalAlignment="Center"  Grid.Row="5" Content="Класс" Name="classlbl"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="0" VerticalAlignment="Center"  Grid.Row="6" Content="СНИЛС" Name="snilslbl" />
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="0" VerticalAlignment="Center"  Grid.Row="7" Content="Медполис" Name="polislbl"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="0" VerticalAlignment="Center"  Grid.Row="8" Content="Регион" Name="regionlbl"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="0" VerticalAlignment="Center"  Grid.Row="9"  Content="Город" Name="citylbl"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="0" VerticalAlignment="Center"  Grid.Row="10" Content="Адрес" Name="addresslbl"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="0" VerticalAlignment="Center"  Grid.Row="11" Content="Номер квартиры" Name="apartmentlbl"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="0" VerticalAlignment="Center"  Grid.Row="12" Content="Дата рождения" Name="birthlbl"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="0" VerticalAlignment="Center"  Grid.Row="13" Content="Пол" Name="genderlbl"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="0" VerticalAlignment="Center"  Grid.Row="14" Content="Школа" Name="schoollbl"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="3" VerticalAlignment="Center"  Grid.Row="9" Content="Тип документа" Name="documentlbl" Grid.ColumnSpan="4" HorizontalAlignment="Center"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="3" VerticalAlignment="Center"  Grid.Row="11" Content="Серия" Name="serialbl"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="3" VerticalAlignment="Center"  Grid.Row="12" Content="Номер" Name="numberlbl"/>
+
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="3" Grid.RowSpan="2" Grid.Row="0" Content="Отдел"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="5" Grid.RowSpan="2" Grid.Row="0" Content="Название"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="3" Grid.RowSpan="2" Grid.Row="5" Content="ФИО"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="5" Grid.RowSpan="2" Grid.Row="5" Content="Телефон"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="2" Grid.Row="1" Content="1 кружок" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10, 0"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="2" Grid.Row="2" Content="2 кружок" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10, 0"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="2" Grid.Row="3" Content="3 кружок" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10, 0"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="2" Grid.Row="6" Content="Родитель 1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="8, 0"/>
+                        <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="2" Grid.Row="7" Content="Родитель 2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="8, 0"/>
+
+                        <TextBox VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignTextBox}" Width="Auto" Height="Auto" Margin="0, 2" Grid.Column="1" Grid.Row="0" Name="name"/>
+                        <TextBox VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignTextBox}" Width="Auto" Height="Auto" Margin="0, 2" Grid.Column="1" Grid.Row="1" Name="surname"/>
+                        <TextBox VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignTextBox}" Width="Auto" Height="Auto" Margin="0, 2" Grid.Column="1" Grid.Row="2" Name="fathername"/>
+                        <TextBox VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignTextBox}" Width="Auto" Height="Auto" Margin="0, 2" Grid.Column="1" Grid.Row="3" Name="email"/>
+                        <TextBox VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignTextBox}" Width="Auto" Height="Auto" Margin="0, 2" Grid.Column="1" Grid.Row="4" Name="phone" Text="+7(" SelectionChanged="Phone_SelectionChanged"/>
+                        <TextBox VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignTextBox}" Width="Auto" Height="Auto" Margin="0, 2" Grid.Column="1" Grid.Row="6" Name="snils"/>
+                        <TextBox VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignTextBox}" Width="Auto" Height="Auto" Margin="0, 2" Grid.Column="1" Grid.Row="7" Name="polis"/>
+                        <TextBox VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignTextBox}" Width="Auto" Height="Auto" Margin="0, 2" Grid.Column="1" Grid.Row="10" Name="address"/>
+                        <TextBox VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignTextBox}" Width="Auto" Height="Auto" Margin="0, 2" Grid.Column="1" Grid.Row="11" Name="apartment"/>
+                        <TextBox VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignTextBox}" Width="Auto" Height="Auto" Margin="0, 2" Grid.Column="5" Grid.Row="11" Name="seria"/>
+                        <TextBox VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignTextBox}" Width="Auto" Height="Auto" Margin="0, 2" Grid.Column="5" Grid.Row="12" Name="number"/>
+                        <TextBox VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignTextBox}" Width="Auto" Height="Auto" Margin="0, 2, 5, 2" Grid.Column="3" Grid.Row="6" Name="parent1Name"/>
+                        <TextBox VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignTextBox}" Width="Auto" Height="Auto" Margin="5, 2, 0, 2" Grid.Column="5" Grid.Row="6" Name="parent1Phone" Text="+7(" KeyUp="Parent1Phone_KeyUp" SelectionChanged="Parent1Phone_SelectionChanged"/>
+                        <TextBox VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignTextBox}" Width="Auto" Height="Auto" Margin="0, 2, 5, 2" Grid.Column="3" Grid.Row="7" Name="parent2Name"/>
+                        <TextBox VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignTextBox}" Width="Auto" Height="Auto" Margin="5, 2, 0, 2" Grid.Column="5" Grid.Row="7" Name="parent2Phone" Text="+7(" SelectionChanged="Parent2Phone_SelectionChanged"/>
+                        <Viewbox Height="25" Grid.Column="1" Grid.Row="13">
+                            <RadioButton Style="{DynamicResource MaterialDesignRadioButton}" GroupName="Gender" Width="50" Margin="0, 5, 60, 0" Content="М" Name="male" />
+                        </Viewbox>
+                        <Viewbox Height="25" Grid.Column="1" Grid.Row="13">
+                            <RadioButton Style="{DynamicResource MaterialDesignRadioButton}" GroupName="Gender" Width="50" Margin="80, 5, 0, 0" Content="Ж" Name="female"/>
+                        </Viewbox>
+                        <RadioButton Style="{DynamicResource MaterialDesignRadioButton}" GroupName="documentType" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="10" Content="Паспорт" Name="passport"/>
+                        <RadioButton Style="{DynamicResource MaterialDesignRadioButton}" GroupName="documentType" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="4" Grid.Row="10" Grid.ColumnSpan="2" Content="Свидетельство" Name="svidetelstvo"/>
+                        <Viewbox Height="23" Grid.Column="2" Grid.Row="14" VerticalAlignment="Center" Margin="10, 0, 0, 0" HorizontalAlignment="Left">
+                            <CheckBox Style="{DynamicResource MaterialDesignCheckBox}" Width="20" Height="20" Name="show_all_schools" Checked="Show_all_schools_Checked" Unchecked="Show_all_schools_Unchecked" VerticalAlignment="Center">
+                                <CheckBox.ToolTip>
+                                    <ToolTip>
+                                        Показать все школы
+                                    </ToolTip>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                        </Viewbox>
+                        <ComboBox Style="{DynamicResource MaterialDesignComboBox}" Width="Auto" VerticalAlignment="Bottom" Height="30" Grid.RowSpan="2" Margin="0, 2" Grid.Column="1" Grid.Row="13" Name="schools"/>
+                        <ComboBox Style="{DynamicResource MaterialDesignComboBox}" Width="Auto" VerticalAlignment="Top" Height="30" Grid.RowSpan="2" Margin="0, 2" Grid.Column="1" Grid.Row="8" Name="regions" IsEditable="True" DropDownOpened="Regions_DropDownOpened" SelectionChanged="Regions_SelectionChanged"/>
+                        <Grid Grid.Column="1" Grid.Row="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <ComboBox Style="{DynamicResource MaterialDesignComboBox}" Width="Auto" Height="Auto" Margin="0, 2, 5, 0" Grid.Column="0"  Name="form" DropDownOpened="Form_DropDownOpened"/>
+                            <ComboBox Style="{DynamicResource MaterialDesignComboBox}" Width="Auto" Height="Auto" Margin="5, 2, 0, 0" Grid.Column="1"  Name="letter" DropDownOpened="Letter_DropDownOpened"/>
+                        </Grid>
+                        <ComboBox VerticalContentAlignment="Center" Style="{DynamicResource MaterialDesignComboBox}" Width="Auto" VerticalAlignment="Top" Height="30" Grid.RowSpan="2" Margin="0, 2" Grid.Column="1" Grid.Row="9" Name="cities" DropDownOpened="Cities_DropDownOpened" SelectionChanged="Cities_SelectionChanged" IsEditable="False" IsHitTestVisible="False" Focusable="False"/>
+                        <ComboBox VerticalContentAlignment="Center" Style="{DynamicResource MaterialDesignComboBox}" Width="Auto" VerticalAlignment="Top" Height="30" Grid.RowSpan="2" Margin="0, 2, 5, 2" Grid.Column="3" Grid.Row="1" Name="departmentName1"  DropDownOpened="DepartmentName1_DropDownOpened" SelectionChanged="DepartmentName1_SelectionChanged" IsEditable="True"/>
+                        <ComboBox VerticalContentAlignment="Center" Style="{DynamicResource MaterialDesignComboBox}" Width="Auto" VerticalAlignment="Top" Height="30" Grid.RowSpan="2" Margin="5, 2, 0, 2" Grid.Column="5" Grid.Row="1" Name="groupName1" SelectionChanged="GroupName1_SelectionChanged" IsEditable="False" IsHitTestVisible="False" Focusable="False"/>
+                        <ComboBox VerticalContentAlignment="Center" Style="{DynamicResource MaterialDesignComboBox}" Width="Auto" VerticalAlignment="Top" Height="30" Grid.RowSpan="2" Margin="0, 2, 5, 2" Grid.Column="3" Grid.Row="2" Name="departmentName2" DropDownOpened="DepartmentName2_DropDownOpened" SelectionChanged="DepartmentName2_SelectionChanged"  IsEditable="False" IsHitTestVisible="False" Focusable="False"/>
+                        <ComboBox VerticalContentAlignment="Center" Style="{DynamicResource MaterialDesignComboBox}" Width="Auto" VerticalAlignment="Top" Height="30" Grid.RowSpan="2" Margin="5, 2, 0, 2" Grid.Column="5" Grid.Row="2" Name="groupName2" SelectionChanged="GroupName2_SelectionChanged" IsEditable="False" IsHitTestVisible="False" Focusable="False"/>
+                        <ComboBox VerticalContentAlignment="Center" Style="{DynamicResource MaterialDesignComboBox}" Width="Auto" VerticalAlignment="Top" Height="30" Grid.RowSpan="2" Margin="0, 2, 5, 2" Grid.Column="3" Grid.Row="3" Name="departmentName3" DropDownOpened="DepartmentName3_DropDownOpened" SelectionChanged="DepartmentName3_SelectionChanged" IsEditable="False" IsHitTestVisible="False" Focusable="False"/>
+                        <ComboBox VerticalContentAlignment="Center" Style="{DynamicResource MaterialDesignComboBox}" Width="Auto" VerticalAlignment="Top" Height="30" Grid.RowSpan="2" Margin="5, 2, 0, 2" Grid.Column="5" Grid.Row="3" Name="groupName3" SelectionChanged="GroupName3_SelectionChanged" IsEditable="False" IsHitTestVisible="False" Focusable="False"/>
+                        <DatePicker Style="{DynamicResource MaterialDesignDatePicker}" Width="Auto" Height="Auto" Margin="0, 0" Grid.Column="1" Grid.Row="12" Name="date"/>
+                    </Grid>
+                    <Button Style="{DynamicResource MaterialDesignRaisedButton}" Width="132" Height="32" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left"  Margin="10, -80, 10, 10" Name="btnSaveStudent" Content="Добавить" Click="BtnSaveStudent_Click"/>
+                    <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Row="1" VerticalAlignment="Center" Foreground="#FFFF4C4C" Name="ErrorLabel" Content="Ошибка" FontSize="25" Visibility="Hidden"/>
+                    <Image Name="settings" Source="Resources/settings.png" Width="60" Height="60" Grid.Row="14" HorizontalAlignment="Left" MouseUp="Settings_MouseUp"></Image>
+                </Grid>
+                <!--<ToggleButton Width="130" Height="30" Style="{StaticResource ToggleButtonStyle1}" Click="ToggleButton_Click"/>-->
+            </Grid>
+        </TabItem>
+        <TabItem Header="Все учащиеся">
+            <Grid x:Name="all_students_main_grid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="52"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="0" HorizontalAlignment="Center" Margin="0,0" Width="100" Grid.RowSpan="2">Отдел</Label>
+                <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0" Width="85" Grid.RowSpan="2">Кружок</Label>
+                <Label Style="{DynamicResource MaterialDesignLabel}" Grid.Column="2" HorizontalAlignment="Center" Margin="0,0" Width="160" Grid.RowSpan="2">Преподаватели</Label>
+                <ComboBox Style="{DynamicResource MaterialDesignComboBox}" VerticalAlignment="Top" Height="30" Grid.RowSpan="2" Name="all_students_departments" Grid.Row="1" Grid.Column="0" Margin="20,11" IsEditable="True" SelectionChanged="All_students_departments_SelectionChanged"/>
+                <ComboBox Style="{DynamicResource MaterialDesignComboBox}" VerticalAlignment="Top" Height="30" Grid.RowSpan="2" Name="all_students_groups" Grid.Row="1" Grid.Column="1" Margin="20,11"/>
+                <ComboBox Style="{DynamicResource MaterialDesignComboBox}" VerticalAlignment="Top" Height="30" Grid.RowSpan="2" Name="all_students_teachers" Grid.Row="1" Grid.Column="2" Margin="20,11"/>
+                <Button Style="{DynamicResource MaterialDesignRaisedButton}" Name="export" Content="Экпортировать" Width="200" Click="Export_Click" Grid.Column="2" Grid.Row="3" Margin="0,5,10,5" HorizontalAlignment="Right"/>
+                <DataGrid Style="{DynamicResource MaterialDesignDataGrid}" Name="students_list" AutoGenerateColumns="False" Grid.Row="2" Grid.ColumnSpan="3" MouseDoubleClick="Students_list_MouseDoubleClick">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Path=Id}" Header="№"/>
+                        <DataGridTextColumn Binding="{Binding Path=Name}" Header="Имя"/>
+                        <DataGridTextColumn Binding="{Binding Path=Surname}" Header="Фамилия"/>
+                        <DataGridTextColumn Binding="{Binding Path=Fathername}" ClipboardContentBinding="{x:Null}" Header="Отчество"/>
+                        <DataGridTextColumn Binding="{Binding Path=Grade}" ClipboardContentBinding="{x:Null}" Header="Школа"/>
+                        <DataGridTextColumn Binding="{Binding Path=School}" ClipboardContentBinding="{x:Null}" Header="Класс"/>
+                        <DataGridTextColumn Binding="{Binding Path=Parent}" ClipboardContentBinding="{x:Null}" Header="Родитель"/>
+                        <DataGridTextColumn Binding="{Binding Path=Parent_phone}" ClipboardContentBinding="{x:Null}" Header="Телефон родителя"/>
+                        <DataGridTextColumn Binding="{Binding Path=Groups}" ClipboardContentBinding="{x:Null}" Header="Группы"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Редактирование учащегося" Name="editTab" Visibility="Hidden">
+            <Grid Name="editGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+            </Grid>
+        </TabItem>
+    </TabControl>
+
 </Window>

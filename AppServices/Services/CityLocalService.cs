@@ -21,19 +21,51 @@ namespace AppServices.Services
             _mapper = mapper;
         }
 
-        public Task<LocalCityDto> Create(LocalCityDto entity)
+        public async Task<LocalCityDto> Create(LocalCityDto entity)
         {
-            throw new NotImplementedException();
+            LocalCity result = null;
+            try
+            {
+                result = _mapper.Map<LocalCity>(entity);
+            }
+            catch (Exception ex)
+            {
+                string mess = ex.Message.ToString();
+                throw new Exception();
+            }
+            LocalCity std = await _cityLocalRepository.Create(result);
+            if (std != null)
+                return entity;
+            return null;
         }
 
-        public Task<LocalCityDto> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            LocalCity std = await _cityLocalRepository.Get(id);
+            if (std != null)
+            {
+                await _cityLocalRepository.Delete(id);
+                return true;
+            }
+            return false;
         }
 
-        public Task<LocalCityDto> Get(int id)
+        public async Task<LocalCityDto> Get(int id)
         {
-            throw new NotImplementedException();
+            LocalCity localCity = await _cityLocalRepository.Get(id);
+            LocalCityDto localCityDto = _mapper.Map<LocalCityDto>(localCity);
+            return localCityDto;
+        }
+
+        public LocalCityDto Get(string cityname)
+        {
+            LocalCity localCity = _cityLocalRepository.Get(cityname);
+            if(localCity!=null)
+            {
+                LocalCityDto localCityDto = _mapper.Map<LocalCityDto>(localCity);
+                return localCityDto;
+            }
+            return null;
         }
 
         public IList<LocalCityDto> GetAll()
@@ -57,9 +89,11 @@ namespace AppServices.Services
             return LocalCitiesDto;
         }
 
-        public Task<LocalCityDto> Update(LocalCityDto entity)
+        public async Task<LocalCityDto> Update(LocalCityDto entity)
         {
-            throw new NotImplementedException();
+            var result = _mapper.Map<LocalCity>(entity);
+            await _cityLocalRepository.Update(result);
+            return entity;
         }
     }
 }

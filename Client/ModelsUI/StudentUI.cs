@@ -1,4 +1,4 @@
-﻿using Client.ModelsUI.Base;
+using Client.ModelsUI.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,12 +18,13 @@ namespace Client.ModelsUI
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Grade { get; set; }
+        public SchoolUI School { get; set; }
         public DocumentUI MainDocument { get; set; }
         public string SNILS { get; set; }
         public string MedPolis { get; set; }
         public LocalCityUI LocalCity { get; set; }
         public string Address { get; set; }
-        public ushort ApartmentNumber { get; set; }
+        public ushort? ApartmentNumber { get; set; }
         /// <summary>
         /// ФИО родителя1 
         /// </summary>
@@ -40,6 +41,7 @@ namespace Client.ModelsUI
         /// Номер телефона родителя2
         /// </summary>
         public string Parent2Phone { get; set; }
+
         public GroupUI Group1 { get; set; }
         public GroupUI Group2 { get; set; }
         public GroupUI Group3 { get; set; }

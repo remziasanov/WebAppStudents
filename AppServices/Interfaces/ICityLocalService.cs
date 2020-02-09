@@ -11,5 +11,6 @@ namespace AppServices.Interfaces
     {
         IList<LocalCityDto> GetAll(int RegionId);
         IList<LocalCityDto> GetAll(string regionname);
+        LocalCityDto Get(string cityname);
     }
 }

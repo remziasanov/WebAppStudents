@@ -1,7 +1,5 @@
 ﻿using AppServices.Interfaces;
 using AppServices.Services;
-using Domain;
-using Domain.Data;
 using Domain.Data.Repositories;
 using Domain.DataContext;
 using Domain.RepositoryInterfaces;
@@ -28,7 +26,6 @@ namespace RegisterComponent
             services.AddTransient<ICityLocalService, CityLocalService>();
             services.AddTransient<ISchoolService, SchoolService>();
             services.AddTransient<IGroupService, GroupService>();
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
             return services;
         }
     }
